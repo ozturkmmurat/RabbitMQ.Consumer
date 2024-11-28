@@ -17,7 +17,14 @@ channel.QueueDeclare(queue: "example-queue", exclusive: false); //Consumer'da da
 //Queue'dan Mesaj Oluşturma
 EventingBasicConsumer consumer = new EventingBasicConsumer(channel);
 //AutoAck = true ise mesajlar otomatik olarak silinir.
-channel.BasicConsume(queue: "example-queue",false, consumer);
+channel.BasicConsume(queue: "example-queue",autoAck:false, consumer);
+
+//FairDispatch BasicQos konfigürasyonu
+//Birinci parametre consumer tarafındn alınabilecek en büyük mesaj boyutunu byte cinsinden belirler. 0 sınırsız demektir.
+//İkinci parametre bir consumer tarafından aynı anda işleme alınabilecek mesaj sayını belirler.
+//Üçüncü parametre bu konfigürasyonun tüm consumerlar için mi yoksa sadece çağrı yapılan consumer için mi geçerli olacağını belirler.
+channel.BasicQos(prefetchSize:0, prefetchCount: 1, global: false);
+
 consumer.Received +=(sender, e) =>
 {
     //Kuyruga gelen mesajin islendigi yerdir.
@@ -25,6 +32,13 @@ consumer.Received +=(sender, e) =>
     //Eger kuyruktaki mesajin icindeki byte veriyi elde etmek isityorsan span veya toArray metodu kullanılmalıdır.
     //e.Body.Span veya e.Body.ToArray() : Kuyruktakim esajın byte verisini getirecektir.
     Console.WriteLine(Encoding.UTF8.GetString(e.Body.Span));
+
+
+    //Mesajı başarılı şekilde işlediğimizi bildiriyoruz.
+    //DeliveryTag id gibi düşünebilirsin hangi mesajı başarılı şekilde işlediğimizi belirtmek için
+    // 2 Parametre eğer false ise sadece şuan ki mesajı başarılı şekilde işlediğnii bildiririz
+    // Eğer true olur ise şuan ki mesaj ve bu mesajdan önceki mesajların da başarılı şekilde işlendiğini bildiririz.
+    channel.BasicAck(deliveryTag: e.DeliveryTag, multiple:false);
 };
 
 Console.Read();
