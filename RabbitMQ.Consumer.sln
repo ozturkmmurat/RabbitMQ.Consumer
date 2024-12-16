@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitMQFanoOutExchange", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitMQTopicExchange", "RabbitMQTopicExchange\RabbitMQTopicExchange.csproj", "{660B9C24-B1F7-445E-96B0-50FB2D2EDE73}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitMQHeaderExchange", "RabbitMQHeaderExchange\RabbitMQHeaderExchange.csproj", "{D62CA022-AA99-40B2-BF29-D89FFDC378E8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{660B9C24-B1F7-445E-96B0-50FB2D2EDE73}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{660B9C24-B1F7-445E-96B0-50FB2D2EDE73}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{660B9C24-B1F7-445E-96B0-50FB2D2EDE73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D62CA022-AA99-40B2-BF29-D89FFDC378E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D62CA022-AA99-40B2-BF29-D89FFDC378E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D62CA022-AA99-40B2-BF29-D89FFDC378E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D62CA022-AA99-40B2-BF29-D89FFDC378E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
